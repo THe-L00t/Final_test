@@ -5,7 +5,7 @@ Circle::Circle() : center{}, rad{0.0}
 {
 }
 
-Circle::Circle(const Point& c, int r) : center{ c }, rad{ r }
+Circle::Circle(const Point& c, double r) : center{ c }, rad{ r }
 {
 }
 
