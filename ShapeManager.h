@@ -19,6 +19,8 @@ public:
 	void remove(int);
 	void draw() const;
 	int getnShape();
+	int getCapacity();
+	void updateSM();
 
 };
 

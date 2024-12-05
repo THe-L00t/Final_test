@@ -131,6 +131,14 @@ int main()
 		else std::cout << " 잘못된 입력입니다. " << std::endl;
 		back = false;
 		//system("cls");
+		for (int i = 0; i < 100; i++)
+		{
+			if (sm.getnShape() >= sm.getCapacity()) {
+				sm.updateSM();
+			}
+			sm.insert(new Rectangle(Point(i, i + 1), Point(i * 2, i * 3)));
+		}
+		
 	}
 
 	sm.draw();

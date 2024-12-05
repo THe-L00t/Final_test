@@ -72,3 +72,19 @@ int ShapeManager::getnShape()
 {
 	return nShape;
 }
+
+int ShapeManager::getCapacity()
+{
+	return capacity;
+}
+
+void ShapeManager::updateSM()
+{
+	capacity += 100;
+	Shape** temp = new Shape * [capacity];
+	memcpy(temp, shapes, sizeof(Shape*));
+	delete[] shapes;
+	shapes = new Shape * [capacity];
+	memcpy(shapes, temp, sizeof(Shape*));
+	delete[] temp;
+}
