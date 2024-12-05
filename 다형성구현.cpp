@@ -83,7 +83,7 @@ int main()
 				if (sm[num] == nullptr) std::cout << "잘못된 입력입니다." << std::endl;
 				/*for (int i = num; sm[i-1] != nullptr; ++i)
 				{*/
-					sm.remove(num);
+				sm.remove(num);
 				//}
 			}
 			else if (menu == 2) {
@@ -93,15 +93,15 @@ int main()
 				std::cout << "3. 원" << std::endl;
 				std::cin >> num;
 				if (num == 1) {
-					for (int i = 0; sm[i] != nullptr; ++i)
+					for (int i = 0; i <=sm.getnShape(); ++i)
 					{
-						if (dynamic_cast<Triangle*>(sm[i]) != nullptr) {
+						if (dynamic_cast<Triangle*>(sm[i]) != nullptr) {	//dynamic_cast 중요함 다운 캐스팅 해도 되는지 확인
 								sm.remove(i);
 						}
 					}
 				}
 				else if (num == 2) {
-					for (int i = 0; sm[i] != nullptr; ++i)
+					for (int i = 0; i <= sm.getnShape(); ++i)
 					{
 						if (dynamic_cast<Rectangle*>(sm[i]) != nullptr) {
 							
@@ -111,7 +111,7 @@ int main()
 					}
 				}
 				else if (num == 3) {
-					for (int i = 0; sm[i] != nullptr; ++i)
+					for (int i = 0; i <= sm.getnShape(); ++i)
 					{
 						if (dynamic_cast<Circle*>(sm[i]) != nullptr) {
 							

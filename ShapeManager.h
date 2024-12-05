@@ -18,6 +18,7 @@ public:
 	void insert(Shape*);
 	void remove(int);
 	void draw() const;
+	int getnShape();
 
 };
 

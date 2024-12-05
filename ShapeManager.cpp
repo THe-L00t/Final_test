@@ -67,3 +67,8 @@ void ShapeManager::draw() const
 	cout << "------------------------------------------------" << '\n' << '\n';
 
 }
+
+int ShapeManager::getnShape()
+{
+	return nShape;
+}
