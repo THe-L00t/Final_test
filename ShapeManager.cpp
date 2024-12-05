@@ -19,6 +19,20 @@ Shape* ShapeManager::operator[](int idx)
 	return shapes[idx];
 }
 
+ShapeManager& ShapeManager::operator=(ShapeManager& other)
+{
+	capacity = other.capacity + 50;
+	nShape = other.nShape;
+	delete[] shapes;
+	shapes = new Shape * [capacity];
+	for (int i = 0; i < nShape; ++i)
+	{
+		shapes[i] = other.shapes[i];
+		other.shapes = nullptr;
+	}
+	return *this;
+}
+
 
 void ShapeManager::insert(Shape* a)
 {
@@ -78,13 +92,30 @@ int ShapeManager::getCapacity()
 	return capacity;
 }
 
-void ShapeManager::updateSM()
+ShapeManager& ShapeManager::updateSM()
 {
-	capacity += 100;
-	Shape** temp = new Shape * [capacity];
-	memcpy(temp, shapes, sizeof(Shape*));
+	//capacity += 100;
+	//Shape** temp = new Shape * [capacity];
+	//temp = shapes;
+	////memcpy(temp, shapes, sizeof(Shape*));
+	///*for (int i = 0; i < capacity-100; ++i)
+	//{
+	//	delete shapes[i];
+	//}*/
+	//delete[] shapes;
+	//shapes = new Shape * [capacity];
+	////memcpy(shapes, temp, sizeof(Shape*));
+	///*for (int i = 0; i < capacity; ++i)
+	//{
+	//	delete temp[i];
+	//}*/
+	
+	ShapeManager temp(capacity + 100);
+	temp.nShape = nShape;
+	for (int i = 0; i < nShape; ++i)
+	{
+		temp.shapes[i] =shapes[i];
+	}
 	delete[] shapes;
-	shapes = new Shape * [capacity];
-	memcpy(shapes, temp, sizeof(Shape*));
-	delete[] temp;
+	return temp;
 }

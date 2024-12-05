@@ -13,14 +13,14 @@ public:
 	ShapeManager(const ShapeManager&) = default;
 
 	Shape* operator[](int idx);
-	
+	ShapeManager& operator=(ShapeManager& other);
 
 	void insert(Shape*);
 	void remove(int);
 	void draw() const;
 	int getnShape();
 	int getCapacity();
-	void updateSM();
+	ShapeManager& updateSM();
 
 };
 

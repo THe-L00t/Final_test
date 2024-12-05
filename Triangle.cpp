@@ -19,5 +19,6 @@ Triangle::~Triangle()
 
 void Triangle::draw() const
 {
+	std::cout << " 그리는중 " << std::endl;
 	std::cout << "삼각형 - (" << p1.x << "," << p1.y << "), (" << p2.x << "," << p2.y << "), (" << p3.x << "," << p3.y << ")" << '\n';
 }

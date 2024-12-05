@@ -133,9 +133,17 @@ int main()
 		//system("cls");
 		for (int i = 0; i < 100; i++)
 		{
-			if (sm.getnShape() >= sm.getCapacity()) {
-				sm.updateSM();
+			if (sm.getnShape()+1 >= sm.getCapacity()) {
+				ShapeManager temp(sm.getCapacity() + 100);
+				temp = sm;
+				for (int i = 0; i < sm.getnShape(); i++)
+				{
+					delete sm[i];
+				}
+				sm = temp;
+				std::cout << " 개수 늘림" << std::endl;
 			}
+			std::cout << " 만드는중 " << std::endl;
 			sm.insert(new Rectangle(Point(i, i + 1), Point(i * 2, i * 3)));
 		}
 		
