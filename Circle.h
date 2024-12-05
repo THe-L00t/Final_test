@@ -2,7 +2,7 @@
 #include "point.h"
 #include "Shape.h"
 
-class Circle : public Shape // 8 + 16 + 8 πŸ¿Ã∆Æ
+class Circle : public Shape 
 {
 public:
 	Circle();

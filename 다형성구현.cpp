@@ -95,7 +95,7 @@ int main()
 				if (num == 1) {
 					for (int i = 0; sm[i] != nullptr; ++i)
 					{
-						if (sizeof(*sm[i]) == sizeof Triangle) {
+						if (dynamic_cast<Triangle*>(sm[i]) != nullptr) {
 								sm.remove(i);
 						}
 					}
@@ -103,7 +103,7 @@ int main()
 				else if (num == 2) {
 					for (int i = 0; sm[i] != nullptr; ++i)
 					{
-						if (sizeof(*sm[i]) == sizeof Rectangle) {
+						if (dynamic_cast<Rectangle*>(sm[i]) != nullptr) {
 							
 								sm.remove(i);
 							
@@ -113,7 +113,7 @@ int main()
 				else if (num == 3) {
 					for (int i = 0; sm[i] != nullptr; ++i)
 					{
-						if (sizeof(*sm[i]) == sizeof Circle) {
+						if (dynamic_cast<Circle*>(sm[i]) != nullptr) {
 							
 								sm.remove(i);
 							
