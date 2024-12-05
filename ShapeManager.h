@@ -12,7 +12,12 @@ public:
 	~ShapeManager();
 	ShapeManager(const ShapeManager&) = default;
 
+	Shape* operator[](int idx);
+	
+
 	void insert(Shape*);
+	void remove(int);
 	void draw() const;
+
 };
 

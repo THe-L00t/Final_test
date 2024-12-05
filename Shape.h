@@ -7,6 +7,7 @@ public:
 	Shape() {};
 	~Shape() {};
 	virtual void draw() const = 0;
+
 };
 #endif
 

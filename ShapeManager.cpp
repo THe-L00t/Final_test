@@ -14,10 +14,37 @@ ShapeManager::~ShapeManager()
 	delete[] shapes;
 }
 
+Shape* ShapeManager::operator[](int idx)
+{
+	return shapes[idx];
+}
+
+
 void ShapeManager::insert(Shape* a)
 {
 	shapes[nShape] = a;
 	nShape++;
+}
+
+void ShapeManager::remove(int n)
+{
+	for (int j = n; shapes[j] != nullptr; ++j)
+	{
+		if (shapes[n + 1] == nullptr) return;
+		if (shapes[n] != shapes[n + 1]) {
+			delete shapes[n];
+		}
+		shapes[n] = shapes[n + 1];
+		//shapes[n + 1] = nullptr;
+	}
+	nShape--;
+	/*if (shapes[n + 1] == nullptr) return;
+	if (shapes[n] != shapes[n + 1]) {
+		delete shapes[n];
+	}
+	shapes[n] = shapes[n + 1];
+	shapes[n + 1] = nullptr;*/
+	
 }
 
 void ShapeManager::draw() const

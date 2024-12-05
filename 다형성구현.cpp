@@ -7,30 +7,28 @@
 #include "Rectangle.h"
 #include "ShapeManager.h"
 
-void PlusShape();
-void DrawAll();
-
 int main()
 {
 	bool exit{ false }, back{false};
-	int menu{}, sel{}, x[3]{}, y[3]{};
+	int menu{}, sel{}, x[3]{}, y[3]{}, num{};
 	double dx{}, dy{}, r{};
 	ShapeManager sm(100);
 
-	/*sm.insert(new Triangle());
+	sm.insert(new Triangle());
 	sm.insert(new Triangle(Point(0, 0), Point(1, 1), Point(2, 2)));
 	sm.insert(new Circle(Point(1.23, 4.56), 7.89));
 
 	for (int i = 0; i < 10; i++)
 	{
 		sm.insert(new Rectangle(Point(i, i + 1), Point(i * 2, i * 3)));
-	}*/
+	}
 
 	while (not exit) {
 		std::cout << "--Menu--" << std::endl << std::endl;
 		std::cout << "1. 원하는 도형 추가" << std::endl;
 		std::cout << "2. 전체 도형을 그리기" << std::endl;
-		std::cout << "3. 프로그램 끝내기" << std::endl;
+		std::cout << "3. 도형 지우기" << std::endl;
+		std::cout << "4. 프로그램 끝내기" << std::endl;
 		std::cin >> menu;
 		if (menu == 1){
 			while (not back) {
@@ -62,7 +60,10 @@ int main()
 					sm.insert(new Circle(Point(dx, dy), r));
 					back = true;
 				}
-				else if (sel == 4) { back = true; }
+				else if (sel == 4) { 
+					
+					back = true; 
+				}
 				else std::cout << "잘못된 입력입니다." << std::endl;
 			}
 		}
@@ -70,7 +71,63 @@ int main()
 			system("cls"); 
 			sm.draw(); 
 		}
-		else if (menu == 3) { exit = true; }
+		else if (menu == 3) {
+			system("cls");
+			std::cout << "어느 방식으로 도형을 제거할까요?" << std::endl;
+			std::cout << "1. 몇 번째 도형을 제거할까요?" << std::endl;
+			std::cout << "2. 어떤 도형을 제거할까요?" << std::endl;
+			std::cin >> menu;
+			if (menu == 1) {
+				std::cout << "몇 번째 도형을 제거할까요?" << std::endl;
+				std::cin >> num;
+				if (sm[num] == nullptr) std::cout << "잘못된 입력입니다." << std::endl;
+				/*for (int i = num; sm[i-1] != nullptr; ++i)
+				{*/
+					sm.remove(num);
+				//}
+			}
+			else if (menu == 2) {
+				std::cout << "어떤 도형을 제거할까요?" << std::endl;
+				std::cout << "1. 삼각형" << std::endl;
+				std::cout << "2. 사각형" << std::endl;
+				std::cout << "3. 원" << std::endl;
+				std::cin >> num;
+				if (num == 1) {
+					for (int i = 0; sm[i] != nullptr; ++i)
+					{
+						if (sizeof(*sm[i]) == sizeof Triangle) {
+								sm.remove(i);
+						}
+					}
+				}
+				else if (num == 2) {
+					for (int i = 0; sm[i] != nullptr; ++i)
+					{
+						if (sizeof(*sm[i]) == sizeof Rectangle) {
+							
+								sm.remove(i);
+							
+						}
+					}
+				}
+				else if (num == 3) {
+					for (int i = 0; sm[i] != nullptr; ++i)
+					{
+						if (sizeof(*sm[i]) == sizeof Circle) {
+							
+								sm.remove(i);
+							
+						}
+					}
+				}
+				else std::cout << "잘못된 입력입니다." << std::endl;
+
+			}
+			else std::cout << "잘못된 입력입니다. " << std::endl;
+		}
+		else if (menu == 4) { 
+			exit = true; 
+		}
 		else std::cout << " 잘못된 입력입니다. " << std::endl;
 		back = false;
 		//system("cls");
@@ -80,7 +137,4 @@ int main()
 
 }
 
-void PlusShape()
-{
-}
 
